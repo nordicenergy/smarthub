@@ -3,7 +3,6 @@
   <a href="https://www.smarthub.org/"><img src="https://www.smarthub.nordicenergy.io/content/uploads/logo-brand.png
   " alt="Nordic Energy SmartHub" width="150"></a>
   <br>
-  Nordic Energy SmartHub
   <br>
   <br>
 </h1>
