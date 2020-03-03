@@ -1,0 +1,38 @@
+{
+    "extends": ["config:base"],
+    "schedule": ["every weekend"],
+    "ignoreDeps": [
+        "@smarthub/device-registry",
+        "@smarthub/market-matcher",
+        "@smarthub/market",
+        "@smarthub/smarthub",
+        "@smarthub/user-registry",
+        "@smarthub/utils-general",
+        "@smarthub/smarthub-backend",
+        "ganache-cli",
+        "solc"
+    ],
+    "labels": ["dependencies"],
+    "packageRules": [
+        {
+            "packagePatterns": ["eslint"],
+            "groupName": "eslint"
+        },
+        {
+            "packagePatterns": ["webpack", "-loader"],
+            "groupName": "webpack"
+        },
+        {
+            "packagePatterns": ["jest"],
+            "groupName": "jest"
+        },
+        {
+            "packagePatterns": ["react", "redux"],
+            "groupName": "react"
+        },
+        {
+            "depTypeList": ["devDependencies"],
+            "automerge": true
+        }
+    ]
+}

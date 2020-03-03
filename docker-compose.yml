@@ -1,0 +1,16 @@
+version: '1'
+services:
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+    volumes:
+      - ./packages/smarthub-ui/dist:/var/www/html
+      - ./packages/smarthub-ui/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge

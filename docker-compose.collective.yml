@@ -1,0 +1,52 @@
+version: '1'
+services:
+  smarthub_ui:
+    image: "nordicenergy/smarthub-ui:${TAG}"
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+    env_file:
+      - ./.env
+    depends_on:
+      - smarthub_backend
+  
+  market_matcher:
+    image: "nordicenergy/market-matcher:${TAG}"
+    env_file:
+      - ./.env
+    depends_on:
+      - smarthub_backend
+  
+  event_listener:
+    image: "nordicenergy/event-listener:${TAG}"
+    env_file:
+      - ./.env
+    depends_on:
+      - smarthub_backend
+  
+  solar_simulator:
+    image: "nordicenergy/solar-simulator:${TAG}"
+    ports:
+      - "3032:3032"
+    env_file:
+      - ./.env
+    depends_on:
+      - smarthub_backend
+    networks:
+      - app-network
+  
+  smarthub_backend:
+    image: "nordicenergy/smarthub-backend:${TAG}"
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    networks:
+      - app-network
+    env_file:
+      - ./.env
+    volumes:
+      - "./db:/var/db"
+
+networks:
+  app-network:
+    driver: bridge
